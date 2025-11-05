@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "res4lyf"
+version = "0.1.0"
+description = "Revolutionary Emergence Samplers 4 LYF - Frozen"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+# Minimal core dependencies only
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+# ComfyUI integration - only install if needed
+comfy = [
+    "comfy-cli",
+]
+
+# Development tools
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+]
+
+# Everything
+all = [
+    "res4lyf[comfy]",
+    "res4lyf[dev]",
+]
+
+[project.urls]
+Repository = "https://github.com/AbstractEyes/RES4LYF-frozen"
+
+[tool.setuptools]
+# Auto-discover all Python packages in the repo
+packages = {find = {}}
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.yaml", "*.txt", "*.md"]
